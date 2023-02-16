@@ -64,3 +64,4 @@ jobs:
        uses: WyriHaximus/github-action-helm3@use-existing-kubeconfig-when-available
        with:
          exec: helm upgrade --install movies ./.helm/app
+         kubeconfig: ${{ secrets.KUBECONFIG }}
