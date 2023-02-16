@@ -47,4 +47,20 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: davidgagaleski/app.jar:latest
+          tags: docker.io/davidgagaleski/app.jar
+
+  helm-lint:
+   name: Helm lint and release
+   runs-on: ubuntu-latest
+   needs: build
+
+   steps:
+     - uses: actions/checkout@v2
+     - name: Helm Lint
+       uses: WyriHaximus/github-action-helm3@v2
+       with:
+         exec: helm lint ./.helm/app
+     - name: Helm install
+       uses: WyriHaximus/github-action-helm3@v2
+       with:
+         exec: helm upgrade --install movies ./.helm/app
