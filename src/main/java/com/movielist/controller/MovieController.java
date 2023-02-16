@@ -31,6 +31,7 @@ public class MovieController {
     }
 
     // Index endpoint. When called, returns a list of all movies persisted in the database
+
     @GetMapping("/")
     public List<MovieDTO> getAll(){
         return movieService.findAll()
