@@ -63,5 +63,5 @@ jobs:
      - name: Helm install
        uses: WyriHaximus/github-action-helm3@v2
        with:
-         exec: helm upgrade install movies ./.helm/app
+         exec: helm upgrade --install movies ./.helm/app
          kubeconfig: '${{ secrets.KUBECONFIG }}'
